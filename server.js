@@ -22,14 +22,15 @@ mongoose.connect("mongodb://localhost/motocrossdb", { useNewUrlParser: true });
 app.get("/scrape", function(req, res) {
   axios.get("https://m.thechronicle.com.au/topic/motocross/").then(function(response) {
     var $ = cheerio.load(response.data);
+    console.log("Scraping");
 
-    $("div class='item-details'").each(function(i, element) {
+    $("div").each(function(i, element) {
       var result = {};
 
-      result.title = $(this)
+      result.link = $(this)
         .children("p")
         .text();
-      result.link = $(this)
+      result.title = $(this)
         .children("a")
         .attr("href");
 
