@@ -21,7 +21,7 @@ app.use(express.static("public"));
 
 var MONGODB_URI = "mongodb://localhost/motocrossdb" || "mongodb://localhost/mongoHeadlines"
 
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 
 app.get("/scrape", function(req, res) {
