@@ -34,6 +34,28 @@ app.get("/scrape", function(req, res) {
         .children("a")
         .attr("href");
 
+      $(".post").each(function(i, element) {
+        var title = $(element).children("a").text();
+        var link = $(element).children("a").attr("href");
+    
+
+        if (title && link) {
+          db.Article.insert({
+            title: title,
+            link: link
+          },
+          function(err, inserted) {
+            if (err) {
+              console.log(err);
+            }
+            else {
+              console.log(inserted);
+            }
+          });
+        }
+      });
+    });
+
       db.Article.create(result)
         .then(function(dbArticle) {
           console.log(dbArticle);
@@ -45,7 +67,8 @@ app.get("/scrape", function(req, res) {
 
     res.send("Scrape Complete");
   });
-});
+
+
 
 app.get("/articles", function(req, res) {
   db.Article.find({})
