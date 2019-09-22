@@ -17,7 +17,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/motocrossdb", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/motocrossdb", { useNewUrlParser: true });
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+mongoose.connect(MONGODB_URI);
+
 
 app.get("/scrape", function(req, res) {
   axios.get("https://motocrossactionmag.com/").then(function(response) {
