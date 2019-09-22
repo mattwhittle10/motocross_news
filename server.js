@@ -20,17 +20,17 @@ app.use(express.static("public"));
 mongoose.connect("mongodb://localhost/motocrossdb", { useNewUrlParser: true });
 
 app.get("/scrape", function(req, res) {
-  axios.get("https://m.thechronicle.com.au/topic/motocross/").then(function(response) {
+  axios.get("https://motocrossactionmag.com/").then(function(response) {
     var $ = cheerio.load(response.data);
     console.log("Scraping");
 
-    $("div").each(function(i, element) {
+    $("article h2").each(function(i, element) {
       var result = {};
 
-      result.link = $(this)
-        .children("p")
-        .text();
       result.title = $(this)
+        .children("a")
+        .text();
+      result.link = $(this)
         .children("a")
         .attr("href");
 
