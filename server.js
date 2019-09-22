@@ -17,13 +17,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/motocrossdb", { useNewUrlParser: true });
 
 app.get("/scrape", function(req, res) {
-  axios.get("http://www.echojs.com/").then(function(response) {
+  axios.get("https://m.thechronicle.com.au/topic/motocross/").then(function(response) {
     var $ = cheerio.load(response.data);
 
-    $("article h2").each(function(i, element) {
+    $("div.a").each(function(i, element) {
       var result = {};
 
       result.title = $(this)
@@ -31,7 +31,7 @@ app.get("/scrape", function(req, res) {
         .text();
       result.link = $(this)
         .children("a")
-        .attr("href");
+        .attr("img");
 
       db.Article.create(result)
         .then(function(dbArticle) {
