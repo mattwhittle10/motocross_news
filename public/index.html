@@ -6,18 +6,27 @@
   <title>Motocross News</title>
 
   <link rel="stylesheet" type="text/css" href="./style/style.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 
 <body>
 
-    <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1"><h1 class="title">Motocross News</h1></span>
-      </nav>
-  
+  <nav class="navbar navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">
+      <h1 class="title">Motocross News</h1>
+    </span>
+  </nav>
+
   <div id="wrapper">
     <h2><i></i></h2>
-    <div id="articles"></div>
-    <div id="notes"></div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-3" id="notes"></div>
+        <div class="col-lg-5"></div>
+        <div id="articles" class="col-lg-4"></div>
+      </div>
+    </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="app.js"></script>

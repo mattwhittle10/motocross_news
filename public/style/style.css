@@ -10,3 +10,30 @@ body {
     color: white;
     font-size: 40px;
 }
+
+#articles {
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#notes {
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 19%;
+}
+
+#titleinput {
+    padding: .85%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+#bodyinput {
+    margin-bottom: 2%;
+}
