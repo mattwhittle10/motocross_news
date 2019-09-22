@@ -23,15 +23,15 @@ app.get("/scrape", function(req, res) {
   axios.get("https://m.thechronicle.com.au/topic/motocross/").then(function(response) {
     var $ = cheerio.load(response.data);
 
-    $("div.a").each(function(i, element) {
+    $("div class='item-details'").each(function(i, element) {
       var result = {};
 
       result.title = $(this)
-        .children("a")
+        .children("p")
         .text();
       result.link = $(this)
         .children("a")
-        .attr("img");
+        .attr("href");
 
       db.Article.create(result)
         .then(function(dbArticle) {
